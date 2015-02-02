@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 关闭系统的动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- 国际化资源配置文件 -->
+    <constant name="struts.custom.i18n.resources" value="mess"></constant>
+    <constant name="struts.devMode" value="true" />
+    <!-- 默认命名空间 -->
+    <package name="default" extends="struts-default">
+    	<action name="default" class="com.lt.action.main.DefaultAction">
+    		<result name="error">403.html</result>
+    	</action>
+    </package>
+    <!-- 登录以及主页面访问ACTION -->
+    <package name="login" namespace="/" extends="struts-default">
+    	<action name="login" class="com.lt.action.main.LoginAction">
+    		<!-- 登录后默认主页为ORACLE 主页 -->
+    		<result name="success" type="redirectAction">
+    			<param name="actionName">oraclehome</param>
+    			<param name="namespace">/</param>
+    		</result>
+    		<result name="error">403.html</result>
+    	</action>
+    	<!-- 默认主页为ORACLE主页 -->
+    	<action name="home">
+    		<result name="success" type="redirectAction">
+    			<param name="actionName">oraclehome</param>
+    			<param name="namespace">/</param>
+    		</result>
+    	</action>
+    	
+    	<action name="oraclehome" class="com.lt.action.main.OracleHomeAction">
+    		<result name="oraclehome">/pages/oracle/oraclehome.html</result>
+    	</action>
+    </package>
+    <!-- ORACLE操作访问ACTION -->
+	<!-- <include file="struts-oracle.xml"></include> -->
+</struts>

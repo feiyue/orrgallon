@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="oracle" namespace="/oracle" extends="struts-default">
+		<action name="*lt" class="com.lt.action.main.OracleHomeAction"
+			method="{1}">
+			<result name="home">/pages/oracle/oraclehome.html</result>
+			<result name="lock">/pages/oracle/lock/oraclelock.html</result>
+		</action>
+		<action name="*lock" class="com.lt.action.oracle.OracleLockAction"
+			method="{1}">
+			<result name="viewAllLock">/pages/oracle/lock/oraclelock.html</result>
+		</action>
+	</package>
+</struts>
